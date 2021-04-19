@@ -9,4 +9,6 @@ public interface TransactionDao {
     void insertTransaction(String payer, Integer points, Date timestamp);
 
     List<Transaction> deductPoints(Integer points);
+
+    List<Transaction> fetchTransactionStatus();
 }

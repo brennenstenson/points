@@ -1,10 +1,12 @@
 package com.demo.points.api;
 
+import com.demo.points.model.Transaction;
 import com.demo.points.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RequestMapping("api/v1/transaction")
 @RestController
@@ -22,7 +24,11 @@ public class TransactionController {
     }
 
     @PostMapping
-    public void spendPoints(@RequestBody Integer points){
-        transactionService.spendPoints(points);
+    public List<Transaction> spendPoints(@RequestBody Integer points){
+        return transactionService.spendPoints(points);
+    }
+    @GetMapping
+    public List<Transaction> getTransactionStatus() {
+        return transactionService.getTransactionsStatus();
     }
 }

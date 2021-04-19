@@ -26,4 +26,8 @@ public class TransactionService {
     public List<Transaction> spendPoints(Integer points) {
         return transactionDao.deductPoints(points);
     }
+
+    public List<Transaction> getTransactionsStatus() {
+        return transactionDao.fetchTransactionStatus();
+    }
 }

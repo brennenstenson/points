@@ -18,8 +18,14 @@ public class TransactionActionService implements TransactionDao {
         return;
     }
 
+    @Override
     public List<Transaction> deductPoints(Integer points) {
         //insert DB logic here
+        return DB;
+    }
+
+    @Override
+    public List<Transaction> fetchTransactionStatus() {
         return DB;
     }
 }
