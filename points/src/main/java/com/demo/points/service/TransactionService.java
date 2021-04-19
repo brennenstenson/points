@@ -18,8 +18,8 @@ public class TransactionService {
     public TransactionService(@Qualifier("Dao") TransactionDao transactionDao) {
         this.transactionDao = transactionDao;
     }
-    public void addTransaction(String payer, Integer points, Date timestamp) {
-        transactionDao.insertTransaction(payer, points, timestamp);
+    public void addTransaction(Transaction transaction) {
+        transactionDao.insertTransaction(transaction);
         return;
     }
 

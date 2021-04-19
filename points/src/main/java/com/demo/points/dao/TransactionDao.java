@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TransactionDao {
 
-    void insertTransaction(String payer, Integer points, Date timestamp);
+    void insertTransaction(Transaction transaction);
 
     List<Transaction> deductPoints(Integer points);
 

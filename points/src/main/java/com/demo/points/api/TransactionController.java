@@ -18,13 +18,18 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @PutMapping
-    public void addTransaction(@RequestBody String payer, Integer points, Date timestamp){
-        transactionService.addTransaction(payer, points, timestamp);
+    @PostMapping
+    public void handlePostMapping(@RequestBody Transaction transaction){
+        if (transaction.getPayer() == null || transaction.getTimestamp() == null) {
+            spendPoints(transaction.getPoints());
+        }
+        else addTransaction(transaction);
     }
 
-    @PostMapping
-    public List<Transaction> spendPoints(@RequestBody Integer points){
+    public void addTransaction(Transaction transaction){
+        transactionService.addTransaction(transaction);
+    }
+    public List<Transaction> spendPoints(Integer points){
         return transactionService.spendPoints(points);
     }
     @GetMapping
