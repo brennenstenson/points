@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-public class Transaction {
+public class Transaction implements Comparable<Transaction>{
 
     private String payer;
     private Integer points;
@@ -40,5 +40,9 @@ public class Transaction {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public int compareTo(Transaction transaction) {
+        return this.getTimestamp().compareTo(transaction.getTimestamp());
     }
 }

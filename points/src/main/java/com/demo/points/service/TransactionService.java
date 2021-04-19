@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TransactionService {
@@ -23,11 +24,11 @@ public class TransactionService {
         return;
     }
 
-    public List<Transaction> spendPoints(Integer points) {
+    public Map<String, Integer> spendPoints(Integer points) {
         return transactionDao.deductPoints(points);
     }
 
-    public List<Transaction> getTransactionsStatus() {
+    public Map<String, Integer> getTransactionsStatus() {
         return transactionDao.fetchTransactionStatus();
     }
 }
