@@ -2,16 +2,11 @@ package com.demo.points.dao;
 
 import com.demo.points.model.Transaction;
 import java.util.Date;
+import java.util.List;
 
 public interface TransactionDao {
 
-    int insertTransaction(String payer, Integer points, Date timestamp);
+    void insertTransaction(String payer, Integer points, Date timestamp);
 
-    default int addTransaction(Transaction transaction) {
-        return 0;
-    }
-
-    default int spendPoints(Integer points) {
-        return 0;
-    }
+    List<Transaction> deductPoints(Integer points);
 }

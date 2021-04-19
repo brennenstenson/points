@@ -13,8 +13,13 @@ public class TransactionActionService implements TransactionDao {
     private static List<Transaction> DB = new ArrayList<>();
 
     @Override
-    public int insertTransaction(String payer, Integer points, Date timestamp) {
+    public void insertTransaction(String payer, Integer points, Date timestamp) {
         DB.add(new Transaction(payer, points, timestamp));
-        return 1;
+        return;
+    }
+
+    public List<Transaction> deductPoints(Integer points) {
+        //insert DB logic here
+        return DB;
     }
 }

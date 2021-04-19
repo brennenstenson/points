@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TransactionService {
@@ -17,8 +18,12 @@ public class TransactionService {
     public TransactionService(@Qualifier("Dao") TransactionDao transactionDao) {
         this.transactionDao = transactionDao;
     }
-    public int addTransaction(String payer, Integer points, Date timestamp) {
-        return transactionDao.insertTransaction(payer, points, timestamp);
+    public void addTransaction(String payer, Integer points, Date timestamp) {
+        transactionDao.insertTransaction(payer, points, timestamp);
+        return;
     }
 
+    public List<Transaction> spendPoints(Integer points) {
+        return transactionDao.deductPoints(points);
+    }
 }

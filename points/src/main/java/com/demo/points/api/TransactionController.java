@@ -2,10 +2,7 @@ package com.demo.points.api;
 
 import com.demo.points.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -19,8 +16,13 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @PostMapping
+    @PutMapping
     public void addTransaction(@RequestBody String payer, Integer points, Date timestamp){
         transactionService.addTransaction(payer, points, timestamp);
+    }
+
+    @PostMapping
+    public void spendPoints(@RequestBody Integer points){
+        transactionService.spendPoints(points);
     }
 }
